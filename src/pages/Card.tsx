@@ -1,4 +1,5 @@
 import { Box, Button, Divider, Text, VStack } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
 import { FormEvent, ReactElement, useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
@@ -8,14 +9,20 @@ export default function Card() {
   const [fileCielo, setFileCielo] = useState(null);
   const [fileSig, setFileSig] = useState(null);
   const [fileMxm, setFileMxm] = useState(null);
-  function handleCreateUser(event: FormEvent) {
+  async function handleUploadFiles(event: FormEvent) {
     event.preventDefault();
-    alert("Submitado");
+    const data = {
+      file: fileCielo,
+      id: 10,
+      upload_at: new Date(),
+    };
+    console.log(data);
+    await axios.post("http://localhost:8000/file/upload", data);
   }
-  function uploadImage(e: FormEvent) {
-    e.preventDefault();
-    console.log(fileCielo, fileSig, fileMxm);
-  }
+  // function uploadImage(e: FormEvent) {
+  //   e.preventDefault();
+  //   console.log(fileCielo, fileSig, fileMxm);
+  // }
   return (
     <Box
       w="100%"
@@ -36,7 +43,7 @@ export default function Card() {
         w="30%"
         margin="auto"
         method="post"
-        onSubmit={uploadImage}
+        onSubmit={handleUploadFiles}
       >
         <Input
           type="file"
@@ -71,7 +78,7 @@ export default function Card() {
             bg: "yellow.100",
             color: "black",
           }}
-          onClick={uploadImage}
+          onClick={handleUploadFiles}
         >
           Conciliar
         </Button>
