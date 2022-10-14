@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie";
@@ -10,6 +10,7 @@ function Animation() {
     {
       id: 0,
       name: "",
+      file_url: "",
       upload_at: "",
     },
   ]);
@@ -41,6 +42,10 @@ function Animation() {
             <li>
               <Text>{dat.name}</Text>
               <strong>{dat.upload_at}</strong>
+              <strong>{dat.file_url}</strong>
+              <Button bg="teal" color="white" as="a" href={dat.file_url} download>
+                Download
+              </Button>
             </li>
           </ul>
         ))}

@@ -12,8 +12,9 @@ export default function Card() {
   async function handleUploadFiles(event: FormEvent) {
     event.preventDefault();
     const data = {
-      file: fileCielo,
-      id: 10,
+      name: fileCielo,
+      file_url: "",
+      id: 0,
       upload_at: new Date(),
     };
     console.log(data);
