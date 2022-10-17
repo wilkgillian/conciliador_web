@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { FormEvent } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";

@@ -1,23 +1,11 @@
 import { Box, Button, Text } from "@chakra-ui/react";
+import Animation from "../components/Concilied/Animation";
 
 function Conciliacao() {
   return (
-    <Box margin="auto" mt="5rem" w="80%" h="700px">
-      <Box
-        bg="white"
-        margin="auto"
-        w="70%"
-        h="70%"
-        borderRadius={20}
-        display="flex"
-        color="black"
-        alignItems="center"
-        justifyContent="center"
-        boxShadow="dark-lg"
-      >
-        <Text textAlign="center" fontSize={50} fontWeight="bold">
-          File
-        </Text>
+    <>
+      <Box margin="auto" mt="5rem" w="80%" h="700px" overflow="hidden">
+        <Animation />
       </Box>
       <Box
         w="100%"
@@ -39,7 +27,7 @@ function Conciliacao() {
           Download
         </Button>
       </Box>
-    </Box>
+    </>
   );
 }
 

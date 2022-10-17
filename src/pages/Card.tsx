@@ -1,7 +1,6 @@
-import { Box, Button, Divider, Text, VStack } from "@chakra-ui/react";
-import axios from "axios";
-import Link from "next/link";
-import { FormEvent, ReactElement, useState } from "react";
+import { Box, Button, Text, VStack } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { FormEvent, useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
 import { Input } from "../components/InputFile";
 
@@ -9,6 +8,9 @@ export default function Card() {
   const [fileCielo, setFileCielo] = useState(null);
   const [fileSig, setFileSig] = useState(null);
   const [fileMxm, setFileMxm] = useState(null);
+  
+  const router = useRouter();
+
   async function handleUploadFiles(event: FormEvent) {
     event.preventDefault();
     const data = {
@@ -18,12 +20,10 @@ export default function Card() {
       upload_at: new Date(),
     };
     console.log(data);
-    await axios.post("http://localhost:8000/file/upload", data);
+    // await axios.post("http://localhost:8000/file/upload", data);
+
+    router.push("/Animation")
   }
-  // function uploadImage(e: FormEvent) {
-  //   e.preventDefault();
-  //   console.log(fileCielo, fileSig, fileMxm);
-  // }
   return (
     <Box
       w="100%"
@@ -51,54 +51,38 @@ export default function Card() {
           onChange={(e) => setFileCielo(e.target.files[0])}
           name="cielo"
           id="cielo"
-          accept=".xlsx, .csv"
+          accept=".xlsx"
         />
         <Input
           type="file"
           onChange={(e) => setFileSig(e.target.files[0])}
           name="sig"
           id="sig"
-          accept=".xlsx, .csv"
+          accept=".xlsx"
         />
         <Input
           type="file"
           onChange={(e) => setFileMxm(e.target.files[0])}
           name="mxm"
           id="mxm"
-          accept=".xlsx, .csv"
+          accept=".xlsx"
           mb={10}
         />
 
-        <Button
-          bg="teal"
-          size="lg"
-          w="100%"
-          h="3rem"
-          type="submit"
-          _hover={{
-            bg: "yellow.100",
-            color: "black",
-          }}
-          onClick={handleUploadFiles}
-        >
-          Conciliar
-        </Button>
-
-        <Link passHref href="/Conciliacao">
           <Button
             bg="teal"
             size="lg"
             w="100%"
             h="3rem"
-            type="button"
+            type="submit"
             _hover={{
               bg: "yellow.100",
               color: "black",
             }}
+            onClick={handleUploadFiles}
           >
-            Baixar arquivo
+            Conciliar
           </Button>
-        </Link>
       </VStack>
     </Box>
   );
