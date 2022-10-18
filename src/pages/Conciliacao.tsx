@@ -4,7 +4,7 @@ import Animation from "../components/Concilied/Animation";
 function Conciliacao() {
   return (
     <>
-      <Box margin="auto" mt="5rem" w="80%" h="700px" overflow="hidden">
+      <Box margin="auto" w="80%" h="700px" overflow="hidden">
         <Animation />
       </Box>
       <Box
