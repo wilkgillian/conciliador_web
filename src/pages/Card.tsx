@@ -3,26 +3,35 @@ import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
 import { Input } from "../components/InputFile";
+import { api } from "../services/api";
 
 export default function Card() {
   const [fileCielo, setFileCielo] = useState(null);
   const [fileSig, setFileSig] = useState(null);
   const [fileMxm, setFileMxm] = useState(null);
-  
+  const [isLoading, setIstLoading] = useState(false);
   const router = useRouter();
 
   async function handleUploadFiles(event: FormEvent) {
     event.preventDefault();
-    const data = {
-      name: fileCielo,
-      file_url: "",
-      id: 0,
-      upload_at: new Date(),
-    };
-    console.log(data);
+    setIstLoading(true);
+    // const data = {
+    //   name: fileCielo,
+    //   file_url: "",
+    //   id: 0,
+    //   upload_at: new Date(),
+    // };
+    // console.log(data);
     // await axios.post("http://localhost:8000/file/upload", data);
+    const formData = new FormData();
+    formData.append("arquivo", fileCielo);
+    await api.post("file/upload", formData);
+    formData.append("arquivo", fileSig);
+    await api.post("file/upload", formData);
+    formData.append("arquivo", fileMxm);
+    await api.post("file/upload", formData);
 
-    router.push("/Animation")
+    router.push("/Conciliacao");
   }
   return (
     <Box
@@ -69,20 +78,20 @@ export default function Card() {
           mb={10}
         />
 
-          <Button
-            bg="teal"
-            size="lg"
-            w="100%"
-            h="3rem"
-            type="submit"
-            _hover={{
-              bg: "yellow.100",
-              color: "black",
-            }}
-            onClick={handleUploadFiles}
-          >
-            Conciliar
-          </Button>
+        <Button
+          bg="teal"
+          size="lg"
+          w="100%"
+          h="3rem"
+          type="submit"
+          _hover={{
+            bg: "yellow.100",
+            color: "black",
+          }}
+          onClick={handleUploadFiles}
+        >
+          Conciliar
+        </Button>
       </VStack>
     </Box>
   );

@@ -19,7 +19,7 @@ function Accordion({ children, title }: AccordionProps) {
       <AccordionItem>
         <h2>
           <AccordionButton>
-            <Box flex="1" textAlign="left">
+            <Box flex="1" textAlign="center" fontSize={15} fontWeight="bold" mt={5} color="yellow.500">
               {title}
             </Box>
             <AccordionIcon />

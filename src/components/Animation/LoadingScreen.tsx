@@ -13,15 +13,13 @@ function LoadingScreen() {
   };
   return (
     <Box
-      width="100%"
-      height="100%"
       display="flex"
       alignItems="center"
       justifyContent="center"
       margin="300px auto"
       alignSelf="center"
     >
-      <Lottie options={defaultOptions} width="20%" height="10%" speed={3} />
+      <Lottie options={defaultOptions} width="30%" height="20%" speed={3} />
     </Box>
   );
 }

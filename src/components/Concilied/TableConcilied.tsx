@@ -17,7 +17,7 @@ import { formatDate } from "../../utils/formatDate";
 import Accordion from "../Accordion";
 import LoadingScreen from "../Animation/LoadingScreen";
 
-export default function Animation() {
+export default function TableConcilied() {
   const [loading, setLoading] = useState(true);
   const [dados, setDados] = useState<DiferencasProps[]>([]);
   useEffect(() => {
@@ -62,37 +62,42 @@ export default function Animation() {
     return { id, dados_vendas, dados_razao, dados_recebimentos };
   });
   return (
-    <>
+    <Box
+      w="100%"
+      h="100%"
+      overflow="auto"
+      bg="#1f338b"
+      padding={5}
+      borderRadius={10}
+    >
+      <Text
+        fontWeight="bold"
+        textAlign="center"
+        fontSize={20}
+        mt={5}
+        mb={7}
+        color="yellow.300"
+      >
+        Diferenças dos relatórios
+      </Text>
       {loading ? (
         <LoadingScreen />
       ) : (
-        <Box
-          w="100%"
-          h="100%"
-          overflow="auto"
-          bg="#1f338b"
-          padding={5}
-          borderRadius={10}
-        >
-          <Text
-            fontWeight="bold"
-            textAlign="center"
-            fontSize={20}
-            mt={5}
-            mb={7}
-          >
-            Diferenças dos relatórios
-          </Text>
+        <>
           <Accordion title="Diferenças Razão">
             <TableContainer>
               {data.map((dat) => (
                 <Table key={dat.id} variant="unstyled">
                   <Thead>
                     <Tr>
-                      <Th>Data do recebimento</Th>
+                      <Th w="40%" textAlign="left">
+                        Data do recebimento
+                      </Th>
                       <Th>Valor Cielo</Th>
                       <Th>Valor MXM</Th>
-                      <Th>Diferença</Th>
+                      <Th w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                        Diferença
+                      </Th>
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -101,7 +106,9 @@ export default function Animation() {
                         <Td>{d.data_recebimento}</Td>
                         <Td>{d.valor_cielo}</Td>
                         <Td>{d.valor_mxm}</Td>
-                        <Td>{d.diferenca}</Td>
+                        <Td w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                          {d.diferenca}
+                        </Td>
                       </Tr>
                     ))}
                   </Tbody>
@@ -118,7 +125,9 @@ export default function Animation() {
                       <Th>Autorização de pagamento</Th>
                       <Th>Valor Cielo</Th>
                       <Th>Valor Sig</Th>
-                      <Th>Diferença</Th>
+                      <Th w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                        Diferença
+                      </Th>
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -127,7 +136,9 @@ export default function Animation() {
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
                         <Td>{d.valor_sig}</Td>
-                        <Td>{d.diferenca}</Td>
+                        <Td w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                          {d.diferenca}
+                        </Td>
                       </Tr>
                     ))}
                   </Tbody>
@@ -144,7 +155,9 @@ export default function Animation() {
                       <Th>Autorização de pagamento</Th>
                       <Th>Valor Cielo</Th>
                       <Th>Valor Sig</Th>
-                      <Th>Diferença</Th>
+                      <Th w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                        Diferença
+                      </Th>
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -153,7 +166,9 @@ export default function Animation() {
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
                         <Td>{d.valor_sig}</Td>
-                        <Td>{d.diferenca}</Td>
+                        <Td w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
+                          {d.diferenca}
+                        </Td>
                       </Tr>
                     ))}
                   </Tbody>
@@ -161,8 +176,8 @@ export default function Animation() {
               ))}
             </TableContainer>
           </Accordion>
-        </Box>
+        </>
       )}
-    </>
+    </Box>
   );
 }

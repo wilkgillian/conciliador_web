@@ -1,5 +1,5 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import Animation from "../components/Concilied/Animation";
+import Animation from "../components/Concilied/TableConcilied";
 
 function Conciliacao() {
   return (
