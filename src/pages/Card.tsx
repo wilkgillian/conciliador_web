@@ -1,4 +1,11 @@
-import { Box, Button, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  Spinner,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
@@ -6,33 +13,44 @@ import { Input } from "../components/InputFile";
 import { api } from "../services/api";
 
 export default function Card() {
-  const [fileCielo, setFileCielo] = useState(null);
-  const [fileSig, setFileSig] = useState(null);
-  const [fileMxm, setFileMxm] = useState(null);
+  const [fileVendasCielo, setFileVendasCielo] = useState("");
+  const [fileRecebimentosCielo, setFileRecebimentosCielo] = useState("");
+  const [fileVendasSig, setFileVendasSig] = useState("");
+  const [fileRecebimentosSig, setFileRecebimentosSig] = useState("");
+  const [fileMxm, setFileMxm] = useState("");
   const [isLoading, setIstLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const router = useRouter();
 
-  async function handleUploadFiles(event: FormEvent) {
-    event.preventDefault();
+  async function handleUploadFiles() {
     setIstLoading(true);
-    // const data = {
-    //   name: fileCielo,
-    //   file_url: "",
-    //   id: 0,
-    //   upload_at: new Date(),
-    // };
-    // console.log(data);
-    // await axios.post("http://localhost:8000/file/upload", data);
-    const formData = new FormData();
-    formData.append("arquivo", fileCielo);
-    await api.post("file/upload", formData);
-    formData.append("arquivo", fileSig);
-    await api.post("file/upload", formData);
-    formData.append("arquivo", fileMxm);
-    await api.post("file/upload", formData);
+    setDisabled(true);
 
+    const formData = new FormData();
+
+    formData.append("arquivo", fileVendasCielo);
+    await new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+      api.post("file/upload", formData)
+    );
+    formData.append("arquivo", fileVendasSig);
+    await new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+      api.post("file/upload", formData)
+    );
+    formData.append("arquivo", fileRecebimentosCielo);
+    await new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+      api.post("file/upload", formData)
+    );
+    formData.append("arquivo", fileRecebimentosSig);
+    await new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+      api.post("file/upload", formData)
+    );
+    formData.append("arquivo", fileMxm);
+    await new Promise((resolve) => setTimeout(resolve, 500)).then(() =>
+      api.post("file/upload", formData)
+    );
     router.push("/Conciliacao");
   }
+
   return (
     <Box
       w="100%"
@@ -57,25 +75,46 @@ export default function Card() {
       >
         <Input
           type="file"
-          onChange={(e) => setFileCielo(e.target.files[0])}
-          name="cielo"
-          id="cielo"
+          onChange={(e) => setFileVendasCielo(e.target.files[0])}
+          name="vendas cielo"
+          id="vendas cielo"
           accept=".xlsx"
+          isRequired={true}
         />
         <Input
           type="file"
-          onChange={(e) => setFileSig(e.target.files[0])}
-          name="sig"
-          id="sig"
+          onChange={(e) => setFileVendasSig(e.target.files[0])}
+          name="vendas sig"
+          id="vendas sig"
           accept=".xlsx"
+          isRequired={true}
         />
         <Input
           type="file"
-          onChange={(e) => setFileMxm(e.target.files[0])}
+          onChange={(e) => setFileRecebimentosCielo(e.target.files[0])}
+          name="recebimentos cielo"
+          id="recebimentos cielo"
+          accept=".xlsx"
+          isRequired={true}
+        />
+        <Input
+          type="file"
+          onChange={(e) => setFileRecebimentosSig(e.target.files[0])}
+          name="recebimentos sig"
+          id="recebimentos sig"
+          accept=".xlsx"
+          isRequired={true}
+        />
+        <Input
+          type="file"
+          onChange={(e) => {
+            setFileMxm(e.target.files[0]), setDisabled(false);
+          }}
           name="mxm"
           id="mxm"
           accept=".xlsx"
           mb={10}
+          isRequired={true}
         />
 
         <Button
@@ -88,9 +127,10 @@ export default function Card() {
             bg: "yellow.100",
             color: "black",
           }}
+          disabled={disabled ? true : false}
           onClick={handleUploadFiles}
         >
-          Conciliar
+          {isLoading ? <Spinner /> : "Conciliar"}
         </Button>
       </VStack>
     </Box>

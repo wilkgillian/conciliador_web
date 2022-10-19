@@ -1,11 +1,11 @@
-import { Box, Button, Text } from "@chakra-ui/react";
-import Animation from "../components/Concilied/TableConcilied";
+import { Box, Button } from "@chakra-ui/react";
+import TableConcilied from "../components/Concilied/TableConcilied";
 
 function Conciliacao() {
   return (
     <>
       <Box margin="auto" w="80%" h="700px" overflow="hidden">
-        <Animation />
+        <TableConcilied />
       </Box>
       <Box
         w="100%"

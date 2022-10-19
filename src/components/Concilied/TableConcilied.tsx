@@ -9,8 +9,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 import { DiferencasProps } from "../../types";
 import { formatCoin } from "../../utils/formatCoin";
 import { formatDate } from "../../utils/formatDate";
@@ -20,14 +20,16 @@ import LoadingScreen from "../Animation/LoadingScreen";
 export default function TableConcilied() {
   const [loading, setLoading] = useState(true);
   const [dados, setDados] = useState<DiferencasProps[]>([]);
+
   useEffect(() => {
     const getDados = async () => {
-      const response = await axios.get("http://localhost:8000/file/conciliado");
+      const response = await api.get("file/conciliado");
       const { data } = response;
       setDados(data);
       setLoading(false);
+
+      getDados();
     };
-    getDados();
   }, []);
 
   const data = dados.map((d) => {
@@ -61,6 +63,7 @@ export default function TableConcilied() {
     });
     return { id, dados_vendas, dados_razao, dados_recebimentos };
   });
+
   return (
     <Box
       w="100%"
