@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/react";
-import Lottie from "react-lottie/index";
-import * as animationData from "./loading_files.json";
+import { Box } from '@chakra-ui/react';
+import Lottie from 'react-lottie';
+import * as animationData from './loading_files.json';
 
 function LoadingScreen() {
   const defaultOptions = {
@@ -8,8 +8,8 @@ function LoadingScreen() {
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
   return (
     <Box
