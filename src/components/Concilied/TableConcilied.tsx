@@ -25,11 +25,12 @@ export default function TableConcilied() {
     const getDados = async () => {
       const response = await api.get("file/conciliado");
       const { data } = response;
+      console.log(data)
       setDados(data);
       setLoading(false);
 
-      getDados();
     };
+    getDados();
   }, []);
 
   const data = dados.map((d) => {

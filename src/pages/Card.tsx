@@ -1,23 +1,29 @@
 import {
   Box,
   Button,
-  FormControl,
   Spinner,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import {
+  useState,
+} from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
 import { Input } from "../components/InputFile";
 import { api } from "../services/api";
 
+
 export default function Card() {
-  const [fileVendasCielo, setFileVendasCielo] = useState("");
-  const [fileRecebimentosCielo, setFileRecebimentosCielo] = useState("");
-  const [fileVendasSig, setFileVendasSig] = useState("");
-  const [fileRecebimentosSig, setFileRecebimentosSig] = useState("");
-  const [fileMxm, setFileMxm] = useState("");
+  const [fileVendasCielo, setFileVendasCielo] = useState<Blob | string>("");
+  const [fileRecebimentosCielo, setFileRecebimentosCielo] = useState<
+    Blob | string
+  >("");
+  const [fileVendasSig, setFileVendasSig] = useState<Blob | string>("");
+  const [fileRecebimentosSig, setFileRecebimentosSig] = useState<Blob | string>(
+    ""
+  );
+  const [fileMxm, setFileMxm] = useState<Blob | string>("");
   const [isLoading, setIstLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const router = useRouter();
@@ -75,7 +81,11 @@ export default function Card() {
       >
         <Input
           type="file"
-          onChange={(e) => setFileVendasCielo(e.target.files[0])}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files?.length) {
+              setFileVendasCielo(e.target.files[0]);
+            }
+          }}
           name="vendas cielo"
           id="vendas cielo"
           accept=".xlsx"
@@ -83,7 +93,11 @@ export default function Card() {
         />
         <Input
           type="file"
-          onChange={(e) => setFileVendasSig(e.target.files[0])}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files?.length) {
+              setFileVendasSig(e.target.files[0]);
+            }
+          }}
           name="vendas sig"
           id="vendas sig"
           accept=".xlsx"
@@ -91,7 +105,11 @@ export default function Card() {
         />
         <Input
           type="file"
-          onChange={(e) => setFileRecebimentosCielo(e.target.files[0])}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files?.length) {
+              setFileRecebimentosCielo(e.target.files[0]);
+            }
+          }}
           name="recebimentos cielo"
           id="recebimentos cielo"
           accept=".xlsx"
@@ -99,7 +117,11 @@ export default function Card() {
         />
         <Input
           type="file"
-          onChange={(e) => setFileRecebimentosSig(e.target.files[0])}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files?.length) {
+              setFileRecebimentosSig(e.target.files[0]);
+            }
+          }}
           name="recebimentos sig"
           id="recebimentos sig"
           accept=".xlsx"
@@ -107,8 +129,10 @@ export default function Card() {
         />
         <Input
           type="file"
-          onChange={(e) => {
-            setFileMxm(e.target.files[0]), setDisabled(false);
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files?.length) {
+              setFileMxm(e.target.files[0]), setDisabled(false);
+            }
           }}
           name="mxm"
           id="mxm"
