@@ -1,5 +1,5 @@
-import { Box, Flex, Spinner } from "@chakra-ui/react";
-import Lottie from "react-lottie";
+import { Box } from "@chakra-ui/react";
+import Lottie from "react-lottie/index";
 import * as animationData from "./loading_files.json";
 
 function LoadingScreen() {
