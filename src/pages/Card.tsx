@@ -1,29 +1,22 @@
-import {
-  Box,
-  Button,
-  Spinner,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import {
-  useState,
-} from "react";
+import { useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
 import { Input } from "../components/InputFile";
 import { api } from "../services/api";
 
-
 export default function Card() {
-  const [fileVendasCielo, setFileVendasCielo] = useState<Blob | string>("");
-  const [fileRecebimentosCielo, setFileRecebimentosCielo] = useState<
-    Blob | string
-  >("");
-  const [fileVendasSig, setFileVendasSig] = useState<Blob | string>("");
-  const [fileRecebimentosSig, setFileRecebimentosSig] = useState<Blob | string>(
+  const [fileVendasCielo, setFileVendasCielo] = useState<Blob | string | File>(
     ""
   );
-  const [fileMxm, setFileMxm] = useState<Blob | string>("");
+  const [fileRecebimentosCielo, setFileRecebimentosCielo] = useState<
+    Blob | string | File
+  >("");
+  const [fileVendasSig, setFileVendasSig] = useState<Blob | string | File>("");
+  const [fileRecebimentosSig, setFileRecebimentosSig] = useState<
+    Blob | string | File
+  >("");
+  const [fileMxm, setFileMxm] = useState<Blob | string | File>("");
   const [isLoading, setIstLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const router = useRouter();

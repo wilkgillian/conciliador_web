@@ -25,10 +25,9 @@ export default function TableConcilied() {
     const getDados = async () => {
       const response = await api.get("file/conciliado");
       const { data } = response;
-      console.log(data)
+      console.log(data);
       setDados(data);
       setLoading(false);
-
     };
     getDados();
   }, []);
@@ -136,7 +135,7 @@ export default function TableConcilied() {
                   </Thead>
                   <Tbody>
                     {dat.dados_vendas.map((d) => (
-                      <Tr>
+                      <Tr key={d.id}>
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
                         <Td>{d.valor_sig}</Td>
@@ -166,7 +165,7 @@ export default function TableConcilied() {
                   </Thead>
                   <Tbody>
                     {dat.dados_recebimentos.map((d) => (
-                      <Tr>
+                      <Tr key={d.id}>
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
                         <Td>{d.valor_sig}</Td>
