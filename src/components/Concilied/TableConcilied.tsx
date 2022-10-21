@@ -96,7 +96,7 @@ export default function TableConcilied() {
                       <Th w="40%" textAlign="left">
                         Data do recebimento
                       </Th>
-                      <Th>Valor Cielo</Th>
+                      <Th>Valor Sig</Th>
                       <Th>Valor MXM</Th>
                       <Th w="20%" bg="rgba(10,23,55,0.3)" textAlign="center">
                         Diferença
