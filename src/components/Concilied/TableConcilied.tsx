@@ -7,15 +7,15 @@ import {
   Td,
   Th,
   Thead,
-  Tr,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { DiferencasProps } from "../../types";
-import { formatCoin } from "../../utils/formatCoin";
-import { formatDate } from "../../utils/formatDate";
-import Accordion from "../Accordion";
-import LoadingScreen from "../Animation/LoadingScreen";
+  Tr
+} from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { DiferencasProps } from '../../types';
+import { formatCoin } from '../../utils/formatCoin';
+import { formatDate } from '../../utils/formatDate';
+import Accordion from '../Accordion';
+import LoadingScreen from '../Animation/LoadingScreen';
 
 export default function TableConcilied() {
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function TableConcilied() {
 
   useEffect(() => {
     const getDados = async () => {
-      const response = await api.get("file/conciliado");
+      const response = await api.get('file/conciliado');
       const { data } = response;
       console.log(data);
       setDados(data);
@@ -32,37 +32,54 @@ export default function TableConcilied() {
     getDados();
   }, []);
 
-  const data = dados.map((d) => {
+  const data = dados.map(d => {
     let id = Math.floor(Date.now() * Math.random()).toString(36);
-    const dados_razao = d.dif_razao_contabil.map((r) => {
+    const dados_recebimentos_sig_mxm = d.dif_recebimentos_sig_mxm.map(r => {
       return {
         id: r.id,
         data_recebimento: formatDate(r.data_recebimento),
-        valor_cielo: formatCoin(r.valor_cielo),
+        valor_cielo: formatCoin(r.valor_sig),
         valor_mxm: formatCoin(r.valor_mxm),
-        diferenca: formatCoin(r.valor_mxm),
+        diferenca: formatCoin(r.diferenca)
       };
     });
-    const dados_vendas = d.dif_vendas_cielo_sig.map((r) => {
+    const dados_vendas_sig_mxm = d.dif_vendas_sig_mxm.map(r => {
+      return {
+        id: r.id,
+        data_recebimento: formatDate(r.data_recebimento),
+        valor_cielo: formatCoin(r.valor_sig),
+        valor_mxm: formatCoin(r.valor_mxm),
+        diferenca: formatCoin(r.diferenca)
+      };
+    });
+    const dados_vendas = d.dif_vendas_cielo_sig.map(r => {
       return {
         id: r.id,
         aut_pagamento: r.aut_pagamento,
         valor_cielo: formatCoin(r.valor_cielo),
         valor_sig: formatCoin(r.valor_sig),
-        diferenca: formatCoin(r.diferenca),
+        diferenca: formatCoin(r.diferenca)
       };
     });
-    const dados_recebimentos = d.dif_recebimentos_cielo_sig.map((r) => {
+    const dados_recebimentos = d.dif_recebimentos_cielo_sig.map(r => {
       return {
         id: r.id,
         aut_pagamento: r.aut_pagamento,
         valor_cielo: formatCoin(r.valor_cielo),
         valor_sig: formatCoin(r.valor_sig),
-        diferenca: formatCoin(r.diferenca),
+        diferenca: formatCoin(r.diferenca)
       };
     });
-    return { id, dados_vendas, dados_razao, dados_recebimentos };
+    return {
+      id,
+      dados_vendas,
+      dados_recebimentos_sig_mxm,
+      dados_recebimentos,
+      dados_vendas_sig_mxm
+    };
   });
+
+  console.log(dados);
 
   return (
     <Box
@@ -89,7 +106,7 @@ export default function TableConcilied() {
         <>
           <Accordion title="Diferenças Razão">
             <TableContainer>
-              {data.map((dat) => (
+              {data.map(dat => (
                 <Table key={dat.id} variant="unstyled">
                   <Thead>
                     <Tr>
@@ -104,7 +121,7 @@ export default function TableConcilied() {
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {dat.dados_razao.map((d) => (
+                    {dat.dados_recebimentos_sig_mxm.map(d => (
                       <Tr key={d.id}>
                         <Td>{d.data_recebimento}</Td>
                         <Td>{d.valor_cielo}</Td>
@@ -121,7 +138,7 @@ export default function TableConcilied() {
           </Accordion>
           <Accordion title="Diferenças Vendas Cielo X Sig">
             <TableContainer>
-              {data.map((dat) => (
+              {data.map(dat => (
                 <Table key={dat.id} variant="unstyled">
                   <Thead>
                     <Tr>
@@ -134,7 +151,7 @@ export default function TableConcilied() {
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {dat.dados_vendas.map((d) => (
+                    {dat.dados_vendas.map(d => (
                       <Tr key={d.id}>
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
@@ -151,7 +168,7 @@ export default function TableConcilied() {
           </Accordion>
           <Accordion title="Diferenças Recebimentos Cielo x Sig">
             <TableContainer>
-              {data.map((dat) => (
+              {data.map(dat => (
                 <Table key={dat.id} variant="unstyled">
                   <Thead>
                     <Tr>
@@ -164,7 +181,7 @@ export default function TableConcilied() {
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {dat.dados_recebimentos.map((d) => (
+                    {dat.dados_recebimentos.map(d => (
                       <Tr key={d.id}>
                         <Td>{d.aut_pagamento}</Td>
                         <Td>{d.valor_cielo}</Td>
