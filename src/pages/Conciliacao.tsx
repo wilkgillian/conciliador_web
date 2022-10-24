@@ -1,7 +1,9 @@
 import { Box, Button } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import TableConcilied from "../components/Concilied/TableConcilied";
 
 function Conciliacao() {
+  const router = useRouter();
   return (
     <>
       <Box margin="auto" w="80%" h="700px" overflow="hidden">
@@ -10,7 +12,8 @@ function Conciliacao() {
       <Box
         w="100%"
         display="flex"
-        mt="4rem"
+        flexDirection="column"
+        mt="1rem"
         alignItems="center"
         justifyContent="center"
       >
@@ -23,8 +26,23 @@ function Conciliacao() {
             bg: "yellow.100",
             color: "black",
           }}
+          disabled
         >
           Download
+        </Button>
+        <Button
+          bg="red.500"
+          size="lg"
+          w="20%"
+          h="3rem"
+          _hover={{
+            bg: "red",
+            color: "black",
+          }}
+          mt={2}
+          onClick={() => router.back()}
+        >
+          Voltar
         </Button>
       </Box>
     </>

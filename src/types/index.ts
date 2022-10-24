@@ -23,7 +23,7 @@ export interface DiferencasProps {
   }[];
   dif_vendas_sig_mxm: {
     id: string;
-    data_recebimento: string;
+    data_venda: string;
     valor_sig: number;
     valor_mxm: number;
     diferenca: number;
