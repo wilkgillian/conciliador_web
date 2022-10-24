@@ -105,6 +105,7 @@ export default function TableConcilied() {
               {data.map((dat) => (
                 <TableContainer
                   id={dat.id}
+                  key={dat.id}
                   data="Data do recebimento"
                   valor_a="Valor Sig"
                   valor_b="Valor MXM"
@@ -112,7 +113,6 @@ export default function TableConcilied() {
                   <TableBody
                     data={dat.dados_recebimentos_sig_mxm}
                     isCieloXSig={false}
-                    key={dat.id}
                   />
                 </TableContainer>
               ))}
@@ -123,6 +123,7 @@ export default function TableConcilied() {
               {data.map((dat) => (
                 <TableContainer
                   id={dat.id}
+                  key={dat.id}
                   data="Data do recebimento"
                   valor_a="Valor Sig"
                   valor_b="Valor MXM"
@@ -130,7 +131,6 @@ export default function TableConcilied() {
                   <TableBody
                     data={dat.dados_vendas_sig_mxm}
                     isCieloXSig={false}
-                    key={dat.id}
                   />
                 </TableContainer>
               ))}
@@ -141,6 +141,7 @@ export default function TableConcilied() {
               {data.map((dat) => (
                 <TableContainer
                   id={dat.id}
+                  key={dat.id}
                   aut="Autorização de pagamento"
                   valor_a="Valor Cielo"
                   valor_b="Valor Sig"
@@ -148,7 +149,6 @@ export default function TableConcilied() {
                   <TableBody
                     data={dat.dados_vendas}
                     isCieloXSig={true}
-                    key={dat.id}
                   />
                 </TableContainer>
               ))}
@@ -159,6 +159,7 @@ export default function TableConcilied() {
               {data.map((dat) => (
                 <TableContainer
                   id={dat.id}
+                  key={dat.id}
                   aut="Autorização de pagamento"
                   valor_a="Valor Cielo"
                   valor_b="Valor Sig"
@@ -166,7 +167,6 @@ export default function TableConcilied() {
                   <TableBody
                     data={dat.dados_recebimentos}
                     isCieloXSig={true}
-                    key={dat.id}
                   />
                 </TableContainer>
               ))}
