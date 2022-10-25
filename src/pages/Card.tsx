@@ -2,7 +2,8 @@ import { Box, Button, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
-import { Input } from "../components/InputFile";
+import BackButton from "../components/Buttons/BackButton";
+import { Input } from "../components/Input/InputFile";
 import { api } from "../services/api";
 
 export default function Card() {
@@ -149,6 +150,7 @@ export default function Card() {
         >
           {isLoading ? <Spinner /> : "Conciliar"}
         </Button>
+        <BackButton />
       </VStack>
     </Box>
   );
