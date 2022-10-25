@@ -1,3 +1,6 @@
+<span>⚠️ Segunda versão em desenvolvimento ⚠️</span>
+<br />
+
 <h1>Conciliador 📜</h1>
 <br/>
 
@@ -5,7 +8,7 @@
 
 <h3>App desenvolvido para auxiliar contadores no processo de conciliação bancária de relatórios de diferentes fontes, o app recebe 5 arquivos .xlsx faz o upload pro backend e retorna os resultados depois de comprar os arquivos e encontrar ou não as diferenças.</h3>
 
-<span>⚠️ Obs: O app possui parâmetros específicos de uso, uma vez que foi desenvolvido para um caso de uso específico de uma empresa.</span>
+<span>⚠️ Obs1: O app possui parâmetros específicos de uso, uma vez que foi desenvolvido para um caso de uso específico de uma empresa.</span>
 
 <h3>Tecnologias:</h3>
 <ul>
