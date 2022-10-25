@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Lottie from "react-lottie";
-import * as animationData from "./json/animation.json";
+import * as animationData from "./animation.json";
 
 export default function AnimationHome() {
   const defaultOptions = {

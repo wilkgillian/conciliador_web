@@ -1,5 +1,19 @@
 import { Tbody, Td, Tr } from "@chakra-ui/react";
-import { DataProps } from "../../types";
+
+interface DataProps {
+  isCieloXSig: boolean;
+  data: TableBodyProps[];
+}
+export interface TableBodyProps {
+  id: string;
+  data_recebimento?: string;
+  valor_cielo?: string;
+  valor_mxm?: string;
+  diferenca: string;
+  aut_pagamento?: string;
+  valor_sig?: string;
+  data_venda?: string;
+}
 
 export default function TableBody({ data, isCieloXSig = true }: DataProps) {
   return (

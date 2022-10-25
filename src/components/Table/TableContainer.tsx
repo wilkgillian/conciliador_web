@@ -1,5 +1,19 @@
-import { Table, Thead, Tr, Th } from "@chakra-ui/react";
-import { TableContainerProps } from "../../types";
+import {
+  Table,
+  Thead,
+  Tr,
+  Th,
+} from "@chakra-ui/react";
+import { ReactNode } from "react";
+
+interface TableContainerProps {
+  id: string;
+  data?: string;
+  aut?: string;
+  valor_a: string;
+  valor_b: string;
+  children: ReactNode;
+}
 
 export default function TableContainer({
   id,
