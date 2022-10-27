@@ -33,7 +33,7 @@ export default function Hero() {
               alignItems="center"
               justifyContent="center"
             >
-              <Image width="900%" height="900%" src={Contador} />
+              <Image width="900%" height="900%" src={Contador} alt="contador.png" />
             </Box>
           ) : (
             ""

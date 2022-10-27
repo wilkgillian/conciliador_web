@@ -40,6 +40,7 @@ export default function Header() {
           }}
           height="100%"
           src={Logo}
+          alt="Logo_senac.png"
         />
       </Link>
       <HStack w={["40%", "50%"]} justifyContent={isWideVersion ? "" : "flex-end"}>
