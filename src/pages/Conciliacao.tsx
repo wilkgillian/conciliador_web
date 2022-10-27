@@ -1,9 +1,9 @@
-import { Box, Button } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Box } from "@chakra-ui/react";
+import BackButton from "../components/Buttons/BackButton";
+import DownloadButton from "../components/Buttons/DownloadButton";
 import TableConcilied from "../components/Concilied/TableConcilied";
 
-function Conciliacao() {
-  const router = useRouter();
+export default function Conciliacao() {
   return (
     <>
       <Box margin="auto" w="80%" h="700px" overflow="hidden">
@@ -17,36 +17,11 @@ function Conciliacao() {
         alignItems="center"
         justifyContent="center"
       >
-        <Button
-          bg="teal"
-          size="lg"
-          w="20%"
-          h="3rem"
-          _hover={{
-            bg: "yellow.100",
-            color: "black",
-          }}
-          disabled
-        >
-          Download
-        </Button>
-        <Button
-          bg="red.500"
-          size="lg"
-          w="20%"
-          h="3rem"
-          _hover={{
-            bg: "red",
-            color: "black",
-          }}
-          mt={2}
-          onClick={() => router.back()}
-        >
-          Voltar
-        </Button>
+        <Box w="20%">
+          <DownloadButton />
+          <BackButton />
+        </Box>
       </Box>
     </>
   );
 }
-
-export default Conciliacao;

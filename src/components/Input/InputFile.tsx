@@ -3,15 +3,9 @@ import {
   FormErrorMessage,
   FormLabel,
   Input as ChakraInput,
-  InputProps,
 } from "@chakra-ui/react";
 import { forwardRef, ForwardRefRenderFunction } from "react";
-
-interface InputFileProps extends InputProps {
-  name: string;
-  label?: string;
-  error?: string;
-}
+import { InputFileProps } from "../../types";
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputFileProps> = ({
   name,
@@ -24,6 +18,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputFileProps> = ({
       {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       Relatório {name}:
       <ChakraInput
+        as="input"
         mt={2}
         name={name}
         id={name}

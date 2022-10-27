@@ -1,8 +1,8 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Lottie from "react-lottie";
-import * as animationData from "./upload.json";
+import * as animationData from "./json/upload.json";
 
-function AnimationUpload() {
+export default function AnimationUpload() {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -19,5 +19,3 @@ function AnimationUpload() {
     </Box>
   );
 }
-
-export default AnimationUpload;
