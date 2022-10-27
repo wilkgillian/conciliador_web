@@ -13,7 +13,6 @@ export default function BackButton() {
         bg: "red",
         color: "black",
       }}
-      mt={2}
       onClick={() => router.back()}
     >
       Voltar

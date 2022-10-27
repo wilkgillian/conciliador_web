@@ -39,7 +39,7 @@ export default function Hero() {
             ""
           )}
 
-          <VStack m={isWideVersion ? 'auto' : 10} justifyContent="center" w="50%">
+          <VStack m={isWideVersion ? 'auto' : 10} justifyContent="center" w={isWideVersion? "50%": "100%"}>
             <Box
               margin="auto"
               w="100%"
@@ -56,7 +56,7 @@ export default function Hero() {
               </Text>
               <AnimationHome />
               <Box
-                w="68%"
+                w={isWideVersion ? "68%": "100%"}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"

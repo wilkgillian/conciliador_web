@@ -1,12 +1,16 @@
-import { Box } from "@chakra-ui/react";
+import { Box, SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
 import BackButton from "../components/Buttons/BackButton";
 import DownloadButton from "../components/Buttons/DownloadButton";
 import TableConcilied from "../components/Concilied/TableConcilied";
 
 export default function Conciliacao() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
     <>
-      <Box margin="auto" w="80%" h="700px" overflow="hidden">
+      <Box margin="auto" w={isWideVersion? "70%" : "90%"} h="700px" overflow="hidden">
         <TableConcilied />
       </Box>
       <Box
@@ -17,9 +21,10 @@ export default function Conciliacao() {
         alignItems="center"
         justifyContent="center"
       >
-        <Box w="20%">
-          <DownloadButton />
-          <BackButton />
+        <Box w={isWideVersion?"70%" :"90%"}>
+          <SimpleGrid columns={2} gap={5} display="flex" alignItems="center"><DownloadButton />
+          <BackButton /></SimpleGrid>
+       
         </Box>
       </Box>
     </>

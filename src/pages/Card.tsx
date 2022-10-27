@@ -1,4 +1,4 @@
-import { Box, Button, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Spinner, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AnimationUpload from "../components/Animation/AnimationUpload";
@@ -20,8 +20,12 @@ export default function Card() {
   const [fileMxm, setFileMxm] = useState<Blob | string | File>("");
   const [isLoading, setIstLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  
   const router = useRouter();
-
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   async function handleUploadFiles() {
     setIstLoading(true);
     setDisabled(true);
@@ -57,10 +61,9 @@ export default function Card() {
       h="100%"
       bg="blue.background"
       mt="3rem"
-      padding="3rem 13rem
-    "
+      padding={ isWideVersion ? "3rem 13rem ": "0 1rem"}
     >
-      <Text as="h1" textAlign="center" fontSize={25} fontWeight="bold">
+      <Text as="h1" textAlign="center" fontSize={isWideVersion? 20 : 17} fontWeight="bold">
         Faça o upload dos arquivos para conciliação
         <br /> dos cartões:
       </Text>
@@ -68,7 +71,7 @@ export default function Card() {
       <VStack
         as="form"
         h="100%"
-        w="30%"
+        w={isWideVersion? 500 : "100%" }
         margin="auto"
         method="post"
         onSubmit={handleUploadFiles}

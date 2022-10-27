@@ -26,7 +26,7 @@ export default function Header() {
       display="flex"
       w="100%"
       maxW={1480}
-      px={["30", "15", "5"]}
+      px={30}
       h={30}
       alignItems="center"
       m="3rem auto"
@@ -42,12 +42,12 @@ export default function Header() {
           src={Logo}
         />
       </Link>
-      <HStack w="40%" justifyContent={isWideVersion ? "" : "flex-end"}>
+      <HStack w={["40%", "50%"]} justifyContent={isWideVersion ? "" : "flex-end"}>
         {isWideVersion ? (
           <Flex
             w="100%"
             justifyContent={
-              router.asPath == "/" ? "space-evenly" : "space-between"
+              router.asPath == "/" ? "space-around" : "space-between"
             }
             alignItems="center"
           >
