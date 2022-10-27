@@ -21,6 +21,7 @@ export default function TableConcilied() {
     const getDados = async () => {
       const response = await api.get("file/conciliado");
       const { data } = response;
+      console.log(data);
       setDados(data);
       setLoading(false);
     };
@@ -145,7 +146,10 @@ export default function TableConcilied() {
                   valor_a="Valor Cielo"
                   valor_b="Valor Sig"
                 >
-                  <TableBody data={dat.dados_vendas} isCieloXSig={true} />
+                  <TableBody
+                    data={dat.dados_vendas}
+                    isCieloXSig={true}
+                  />
                 </TableContainer>
               ))}
             </TableContainerChakra>
@@ -160,7 +164,10 @@ export default function TableConcilied() {
                   valor_a="Valor Cielo"
                   valor_b="Valor Sig"
                 >
-                  <TableBody data={dat.dados_recebimentos} isCieloXSig={true} />
+                  <TableBody
+                    data={dat.dados_recebimentos}
+                    isCieloXSig={true}
+                  />
                 </TableContainer>
               ))}
             </TableContainerChakra>

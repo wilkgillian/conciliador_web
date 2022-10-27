@@ -6,10 +6,14 @@ import {
   AccordionPanel,
   Box,
 } from "@chakra-ui/react";
-import { AccordionProps } from "../../types";
+import { ReactNode } from "react";
 
+interface AccordionProps {
+  children: ReactNode;
+  title: string;
+}
 
-export default function Accordion({ children, title }: AccordionProps) {
+function Accordion({ children, title }: AccordionProps) {
   return (
     <ChakraAccordion defaultIndex={[0]} allowMultiple border="gray">
       <AccordionItem>
@@ -27,3 +31,4 @@ export default function Accordion({ children, title }: AccordionProps) {
   );
 }
 
+export default Accordion;
