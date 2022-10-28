@@ -7,7 +7,6 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import Contador from "../../../public/images/contador.jpg";
 import AnimationHome from "../Animation/AnimationHome";
 import StartButton from "../Buttons/StartButton";
 
@@ -33,13 +32,22 @@ export default function Hero() {
               alignItems="center"
               justifyContent="center"
             >
-              <Image width="900%" height="900%" src={Contador} alt="contador.png" />
+              <Image
+                width="900%"
+                height="900%"
+                src="/images/contador.jpg"
+                alt="contador.png"
+              />
             </Box>
           ) : (
             ""
           )}
 
-          <VStack m={isWideVersion ? 'auto' : 10} justifyContent="center" w={isWideVersion? "50%": "100%"}>
+          <VStack
+            m={isWideVersion ? "auto" : 10}
+            justifyContent="center"
+            w={isWideVersion ? "50%" : "100%"}
+          >
             <Box
               margin="auto"
               w="100%"
@@ -48,7 +56,12 @@ export default function Hero() {
               alignItems="center"
               justifyContent="center"
             >
-              <Text fontWeight="bold" as="h1" fontSize={["4xl"]} textAlign="center">
+              <Text
+                fontWeight="bold"
+                as="h1"
+                fontSize={["4xl"]}
+                textAlign="center"
+              >
                 Sistema de conciliação:
               </Text>
               <Text as="p" fontSize={["lg"]} textAlign="center">
@@ -56,7 +69,7 @@ export default function Hero() {
               </Text>
               <AnimationHome />
               <Box
-                w={isWideVersion ? "68%": "100%"}
+                w={isWideVersion ? "68%" : "100%"}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"

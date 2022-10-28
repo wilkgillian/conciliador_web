@@ -13,12 +13,16 @@ export default function AnimationHome() {
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
-    },
+    }
   };
   return (
-    <Box w={isWideVersion? "70%": "100%"} mt="2rem">
+    <Box w={isWideVersion ? "70%" : "100%"} mt="2rem">
       <Flex>
-        <Lottie options={defaultOptions} width={isWideVersion? "50%": "100%"} speed={1} />
+        <Lottie
+          options={defaultOptions}
+          width={isWideVersion ? "50%" : "100%"}
+          speed={1}
+        />
       </Flex>
     </Box>
   );

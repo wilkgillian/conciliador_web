@@ -7,9 +7,8 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../public/images/logo_senac.svg";
 import { ActiveLink } from "../ActiveLink";
-import styles from "./style.module.scss";
+import styles from "./styles.module.scss";
 import StartButton from "../Buttons/StartButton";
 import { useRouter } from "next/router";
 import HamburguerMenu from "../MenuResponsivo";
@@ -39,7 +38,7 @@ export default function Header() {
             cursor: "pointer",
           }}
           height="100%"
-          src={Logo}
+          src="/images/logo_senac.svg"
           alt="Logo_senac.png"
         />
       </Link>
