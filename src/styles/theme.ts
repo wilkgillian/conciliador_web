@@ -21,6 +21,13 @@ export const theme = extendTheme({
         bg: "blue.background",
         color: "white",
       },
+      button: {
+        m: '1'
+      }
     },
+  },
+  fonts: {
+    heading: "Roboto",
+    body: "Roboto",
   },
 });

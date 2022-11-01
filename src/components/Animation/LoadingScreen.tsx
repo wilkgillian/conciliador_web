@@ -1,15 +1,19 @@
-import { Box } from '@chakra-ui/react';
-import Lottie from 'react-lottie';
-import * as animationData from './loading_files.json';
+import { Box, useBreakpointValue } from "@chakra-ui/react";
+import Lottie from "react-lottie";
+import * as animationData from "./json/loading_files.json";
 
-function LoadingScreen() {
+export default function LoadingScreen() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   const defaultOptions = {
     loop: true,
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
   return (
     <Box
@@ -19,9 +23,7 @@ function LoadingScreen() {
       margin="300px auto"
       alignSelf="center"
     >
-      <Lottie options={defaultOptions} width="30%" height="20%" speed={3} />
+      <Lottie options={defaultOptions} width={isWideVersion? "30%" : "100%"} height="20%" speed={3} />
     </Box>
   );
 }
-
-export default LoadingScreen;
